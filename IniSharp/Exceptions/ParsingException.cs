@@ -12,3 +12,4 @@ namespace IniSharp.Exceptions
         }
     }
 }
+
