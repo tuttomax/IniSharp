@@ -63,7 +63,6 @@ namespace IniSharp
 
                     if (isSection)
                     {
-                        if (section.Pairs.Count != 0) Sections.Add(section);
                         section = new Section(SectionRegex.Match(line).Groups[1].Value);
                     }
 
@@ -73,7 +72,8 @@ namespace IniSharp
                         section.Pairs.Add(pair);
                     }
 
-                }
+					if (section.Pairs.Count != 0 && !Sections.Contains(section)) Sections.Add(section);
+				}
             }
         }
     }
