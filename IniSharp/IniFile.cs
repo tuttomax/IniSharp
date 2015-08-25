@@ -39,9 +39,9 @@ namespace IniSharp
         public void Write(string section, string key, string newValue)
         {
             WritePrivateProfileString(section, key, newValue, _path);
-            var sp = new Stopwatch();sp.Start();
+            //var sp = new Stopwatch();sp.Start();
             ProcessFile();
-            sp.Stop();Console.Write(sp.Elapsed.ToString());
+            //sp.Stop();Console.Write(sp.Elapsed.ToString());
         }
 
         private void ProcessFile()
@@ -63,7 +63,7 @@ namespace IniSharp
 
                     if (isSection)
                     {
-                        section = new Section(SectionRegex.Match(line).Groups[1].Value);
+                        section = new Section(SectionRegex.GetGroupValue(line, 1));
                     }
 
                     if (isPair)
